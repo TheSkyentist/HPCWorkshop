@@ -1,0 +1,7 @@
+*.DS_Store
+*.out
+*fits
+*png
+*pdf
+*svg
+*.snakemake

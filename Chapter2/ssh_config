@@ -1,0 +1,14 @@
+# MPCDF
+Host gate*
+  Hostname %h.mpcdf.mpg.de
+  User REPLACE
+
+Host cobrai* raven*
+  Hostname %h.mpcdf.mpg.de
+  User REPLACE
+  ProxyJump gate
+
+Host vera*
+  Hostname %h.bc.rzg.mpg.de
+  User REPLACE
+  ProxyJump gate
