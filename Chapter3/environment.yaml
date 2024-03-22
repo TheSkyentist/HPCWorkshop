@@ -1,0 +1,9 @@
+name: snakemake
+channels:
+- conda-forge
+dependencies:
+- python==3.11.* 
+- bioconda::snakemake
+- astropy
+- matplotlib
+- graphviz

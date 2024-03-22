@@ -1,0 +1,51 @@
+# Assuming spectra.txt contains lines like "spec-10000-57346-0002.fits"
+samples = [line.strip() for line in open("spectra.txt")]
+
+rule all:
+    input:
+        expand("{sample}.pdf", sample=samples),
+
+rule download_data:
+    output:
+        ???
+    params:
+        url=lambda wildcards: "https://dr18.sdss.org/sas/dr18/prior-surveys/sdss2-dr8-sdss/spectro/redux/26/spectra/{0}/{1}".format(wildcards.sample.split('-')[1], wildcards.sample)
+    shell:
+        """
+        wget -nv  {params.url}.fits -O {output}
+        """
+
+rule convert_to_fnu:
+    input:
+        ???
+    output:
+        temp(???)
+    run:
+        ???
+
+rule plot_spectrum:
+    input:
+        ???,
+    output:
+        ???,
+    run:
+        # Import packages
+        import matplotlib
+        matplotlib.use('agg')
+        import matplotlib.pyplot as plt
+        from astropy.table import Table
+
+        # Open
+        data =  Table.read(input[0],hdu=1)
+
+        # Plot spectrum
+        plt.plot(10**data["loglam"], data["flux"],ds='steps-mid',c='k',lw=0.5)
+        
+        # Labels 
+        plt.xlabel(r"Rest Wavelength [\AA]")
+        plt.ylabel(r"Flux")
+        plt.title(f"Spectrum of {input[0]}")
+
+        # Save
+        plt.savefig(output[0])
+        plt.close()

@@ -1,0 +1,42 @@
+# Define your FITS files
+SAMPLES = ["1", "2", "3"]
+
+# Global imports
+import numpy as np
+from astropy.io import fits
+
+rule all:
+    input:
+        'concat.txt'
+        
+# Rule to create FITS data files
+rule create_data:
+    output:
+        "{sample}.fits"
+    run:
+        data = np.ones((10, 10))
+        data += np.random.normal(0, 0.1, data.shape)
+        fits.PrimaryHDU(data=data).writeto(output[0], overwrite=True)
+
+# Rule to calculate median from FITS files and write to text files
+rule calculate_median:
+    input:
+        "{sample}.fits"
+    output:
+        temp("{sample}.txt")
+    run:
+        median_value = np.median(fits.getdata(input[0]))
+        with open(output[0], "w") as f:
+            f.write(str(median_value))
+
+# Rule to concatenate all text files
+rule concatenate:
+    input:
+        expand("{sample}.txt", sample=SAMPLES)
+    output:
+        "concat.txt"
+    run:
+        with open(output[0], "w") as f:
+            for sample in input:
+                with open(sample) as s:
+                    f.write(s.read() + "\n")
