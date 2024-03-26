@@ -19,7 +19,7 @@
 # 
 # 3) Get notifications
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=hviding@mpia.de
+#SBATCH --mail-user=YOUREMAILHERE
 #
 # 4) Request Resources
 #SBATCH --nodes=1 # Number of Nodes we request

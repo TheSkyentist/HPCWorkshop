@@ -1,6 +1,8 @@
 // Multithreaded program to calculate the sum of the first n natural numbers using OpenMP
 // Compile using gcc multithread_openmp.c -o multithread_openmp.out -fopenmp
- 
+// If on macOS, make sure you have gcc installed (e.g. with homebrew) and then call gcc-13
+// This is because of some weirdness with the clang compiler
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>

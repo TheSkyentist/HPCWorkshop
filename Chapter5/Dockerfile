@@ -1,4 +1,4 @@
-# Use CentOS 8 as the base image
+# Use Alpine as the base image as it is very small
 FROM alpine:latest
 
 # Set working directory

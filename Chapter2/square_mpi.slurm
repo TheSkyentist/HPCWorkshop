@@ -19,7 +19,7 @@
 # 
 # 3) Get notifications
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=hviding@mpia.de
+#SBATCH --mail-user=YOUREMAILHERE
 #
 # 4) Request Resources
 #SBATCH --nodes=1 # Number of Nodes we request
@@ -30,6 +30,10 @@
 ###BATCH --mem-per-cpu=10GB # Specify memory per cpu
 #SBATCH --time 00:00:01 # Maximum wall-time of our program (HH:MM:DD)
 #
+# 5) Request express queue
+# This will only work on Cobra, as it is the only one with a queue named express. 
+# On MPCDF queues are assigned automagically, but always worth looking at.
+#SBATCH -p=express
 # --------------------------------------------------------------
 # Main Body: Run the job
 # --------------------------------------------------------------
