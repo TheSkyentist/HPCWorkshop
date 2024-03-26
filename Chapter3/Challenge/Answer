@@ -3,7 +3,7 @@ samples = [line.strip() for line in open("spectra.txt")]
 
 rule all:
     input:
-        expand("{sample}.pdf", sample=samples),
+        expand("{sample}.png", sample=samples),
 
 rule download_data:
     output:
@@ -41,7 +41,7 @@ rule plot_spectrum:
     input:
         "{sample}.fnu",
     output:
-        "{sample}.pdf",
+        "{sample}.png",
     run:
         # Import packages
         import matplotlib

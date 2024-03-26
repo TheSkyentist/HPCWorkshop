@@ -2,7 +2,6 @@
 *.out
 *fits
 *png
-*pdf
 *svg
 concat.txt
 *.snakemake
