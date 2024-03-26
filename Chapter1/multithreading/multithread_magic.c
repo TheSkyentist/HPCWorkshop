@@ -7,7 +7,7 @@
 // Main Function 
 int main() 
 { 
-    const long n = 100000000; 
+    const long n = 1000000; 
 
     long long result = n*(n+1)/2;
     printf("Sum: %lld\n", result);

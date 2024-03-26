@@ -24,6 +24,6 @@ function sum_parallel_chunks(n::Int)
     return sum(chunk_sums)
 end
 
-const n = 100_000_000
+const n = 1_000_000
 result_parallel = @time sum_parallel_chunks(n)
 println("Sum: ", result_parallel)

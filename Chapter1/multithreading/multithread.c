@@ -57,7 +57,7 @@ long long sum_parallel(int n) {
 }
 
 int main() {
-    const int n = 100000000;
+    const int n = 1000000;
     long long result_parallel = sum_parallel(n);
     printf("Sum: %lld\n", result_parallel);
 

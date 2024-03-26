@@ -17,6 +17,6 @@ function sum_parallel(n::Int)
 end
 
 # Main program
-const n = 100_000_000
+const n = 1_000_000
 result_parallel = @time sum_parallel(n)
 println("Sum: ", result_parallel)

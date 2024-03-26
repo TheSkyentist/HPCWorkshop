@@ -4,7 +4,7 @@
 from concurrent.futures import ThreadPoolExecutor
 
 # Define the total number of numbers and number of threads
-SIZE = 1000000
+SIZE = 1_000_000
 THREAD_COUNT = 10
 
 # Define the function to sum a range of numbers
