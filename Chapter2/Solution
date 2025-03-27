@@ -1,0 +1,21 @@
+# Access Vera for example
+ssh USERNAME@gate.mpcdf.mpg.de
+ssh USERNAME@vera01.bc.rzg.mpg.de
+
+# Or if using SSH config
+ssh vera01
+
+### Add this to your SLURM script
+
+# Load Modules
+# find-module is a very helpful utility!
+module load anaconda/3/2023.03 gcc/14 openmpi/5.0
+
+# Create conda environment
+conda create --name fast-mpi4py python=3.8 -y && conda init
+source ~/.bashrc
+conda activate fast-mpi4py && pip install mpi4py --no-cache-dir
+
+# Run a simple MPI program
+srun -n 2  -p interactive multiprocess_mpi.py
+

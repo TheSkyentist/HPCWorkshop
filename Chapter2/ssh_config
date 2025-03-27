@@ -3,7 +3,7 @@ Host gate*
   Hostname %h.mpcdf.mpg.de
   User REPLACE
 
-Host cobrai* raven*
+Host raven* viper*
   Hostname %h.mpcdf.mpg.de
   User REPLACE
   ProxyJump gate

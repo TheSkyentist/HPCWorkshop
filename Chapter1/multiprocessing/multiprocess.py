@@ -16,7 +16,7 @@ def calculate_squares(numbers):
     with Pool(processes=10) as pool:
         # Map the 'square' function to the list of numbers
         chunksize = 10 # The number of elements per chunk, very important!
-        results = pool.map_async(square, numbers, chunksize)
+        results = pool.map_async(square, numbers, chunksize).get()
         pool.close()
         pool.join()
     return results
