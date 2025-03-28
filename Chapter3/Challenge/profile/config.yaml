@@ -1,0 +1,21 @@
+# MPCDF Vera configuration file
+local-cores: 1
+
+# Settings to continue running and keep incomplete
+keep-going: True
+keep-incomplete: True
+
+# Max number of jobs
+jobs: 3
+
+# Queue system
+executor: slurm
+use-envmodules: True
+
+# Default job requests
+default-resources:
+    nodes: 1
+    tasks: 1
+    cpus_per_task: 72
+    runtime: 2880
+    mem_mb: 250000

@@ -4,6 +4,7 @@ channels:
 dependencies:
 - python==3.11.* 
 - bioconda::snakemake
+- bioconda::snakemake-executor-plugin-slurm
 - astropy
 - matplotlib
 - graphviz
