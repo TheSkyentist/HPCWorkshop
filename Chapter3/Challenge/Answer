@@ -23,6 +23,7 @@ rule convert_to_fnu:
     output:
         temp("{sample}.fnu")
     run:
+        import astropy.units as u
         from astropy.io import fits
         from astropy.table import Table
         import numpy as np
@@ -32,7 +33,9 @@ rule convert_to_fnu:
             data = Table(hdul[1].data)
 
         # Convert to fnu
-        data["flux"] *= 0
+        flam = data['flux'] * 1e-17 * u.erg / u.s / u.cm**2 / u.AA
+        fnu = flam.to(u.uJy,equivalencies=u.spectral_density((10**data['loglam'])*u.AA))
+        data["flux"] = fnu
 
         # Save
         data.write(output[0], format="fits")
